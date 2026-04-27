@@ -3,6 +3,12 @@ import react from "@vitejs/plugin-react";
 
 const expoWebUrl = process.env.EXPO_WEB_URL || "http://localhost:3001";
 
+const expoProxy = {
+  target: expoWebUrl,
+  changeOrigin: true,
+  ws: true,
+};
+
 export default defineConfig({
   base: "/__mobile_preview_assets/",
   plugins: [react()],
@@ -10,11 +16,16 @@ export default defineConfig({
     port: 3000,
     proxy: {
       "/__expo_preview": {
-        target: expoWebUrl,
-        changeOrigin: true,
+        ...expoProxy,
         rewrite: (path) => path.replace(/^\/__expo_preview/, "") || "/",
-        ws: true,
       },
+      "/node_modules": expoProxy,
+      "/assets": expoProxy,
+      "/static": expoProxy,
+      "/_expo": expoProxy,
+      "/index.bundle": expoProxy,
+      "/favicon.ico": expoProxy,
+      "/manifest.json": expoProxy,
     },
     allowedHosts: true,
   },
