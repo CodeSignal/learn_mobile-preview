@@ -13,7 +13,7 @@ export default defineConfig({
   base: "/__mobile_preview_assets/",
   plugins: [react()],
   server: {
-    port: 3000,
+    port: 8080,
     proxy: {
       "/__expo_preview": {
         ...expoProxy,
@@ -30,6 +30,6 @@ export default defineConfig({
     allowedHosts: true,
   },
   preview: {
-    port: 3000,
+    port: 8080,
   },
 });
