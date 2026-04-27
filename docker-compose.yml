@@ -1,5 +1,6 @@
 services:
   mobile-preview:
-    image: ghcr.io/codesignal/learn_mobile-preview:latest
+    build:
+      context: .
     ports:
       - "3000:3000"
