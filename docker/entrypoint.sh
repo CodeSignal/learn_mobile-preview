@@ -3,6 +3,7 @@ set -eu
 
 : "${PREVIEW_URL:=/__expo_preview/}"
 : "${EXPO_WEB_URL:=http://localhost:3001}"
+export PREVIEW_URL EXPO_WEB_URL
 
 envsubst '${EXPO_WEB_URL}' \
   < /etc/nginx/conf.d/default.conf.template \
