@@ -6,14 +6,20 @@ The app does not emulate native APIs. Expo handles the runtime; this project onl
 
 ## Local Development
 
-Start your Expo web app on port `3000`, then run:
+Start your Expo web app on port `3001`, then run:
 
 ```bash
 npm install
 npm run dev
 ```
 
-Open the wrapper at `http://localhost:5173`. It defaults to loading `http://localhost:3000`.
+Open the wrapper at `http://localhost:3000`. It defaults to loading Expo web through `/__expo_preview/`.
+
+To target a different local Expo web URL:
+
+```bash
+EXPO_WEB_URL="http://localhost:3002" npm run dev
+```
 
 ## Docker
 
@@ -26,15 +32,15 @@ docker build -t learn_mobile-preview .
 Run it:
 
 ```bash
-docker run --rm -p 8080:80 learn_mobile-preview
+docker run --rm -p 3000:3000 learn_mobile-preview
 ```
 
-Open `http://localhost:8080`. The phone iframe will point at `http://localhost:3000` by default.
+Open `http://localhost:3000`. The phone iframe points at `/__expo_preview/`, which nginx proxies to Expo web at `http://localhost:3001` by default. In Docker, that default only works when Expo is reachable from the sidecar as `localhost:3001`.
 
 To target a different Expo web URL:
 
 ```bash
-docker run --rm -p 8080:80 -e PREVIEW_URL="http://localhost:3000" learn_mobile-preview
+docker run --rm -p 3000:3000 -e EXPO_WEB_URL="http://host.docker.internal:3001" learn_mobile-preview
 ```
 
 ## Container Registry

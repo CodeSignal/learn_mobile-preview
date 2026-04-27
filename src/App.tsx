@@ -14,7 +14,7 @@ type Device = {
   height: number;
 };
 
-const DEFAULT_PREVIEW_URL = "http://localhost:3000";
+const DEFAULT_PREVIEW_URL = "/__expo_preview/";
 
 const DEVICES: Device[] = [
   { label: "iPhone 15", width: 393, height: 852 },
