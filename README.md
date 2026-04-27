@@ -32,15 +32,21 @@ docker build -t learn_mobile-preview .
 Run it:
 
 ```bash
-docker run --rm -p 8080:8080 learn_mobile-preview
+docker run --rm -p 3000:3000 learn_mobile-preview
 ```
 
-Open `http://localhost:8080`. The phone iframe points at `/__expo_preview/`, which the Vite server proxies to Expo web at `http://localhost:3001` by default. In Docker, that default only works when Expo is reachable from the container as `localhost:3001`.
+Open `http://localhost:3000`. The phone iframe points at `/__expo_preview/`, which the Vite server proxies to Expo web at `http://localhost:3001` by default. In Docker, that default only works when Expo is reachable from the container as `localhost:3001`.
 
 To target a different Expo web URL:
 
 ```bash
-docker run --rm -p 8080:8080 -e EXPO_WEB_URL="http://host.docker.internal:3001" learn_mobile-preview
+docker run --rm -p 3000:3000 -e EXPO_WEB_URL="http://host.docker.internal:3001" learn_mobile-preview
+```
+
+Or use Docker Compose so the port mapping is stored in config:
+
+```bash
+docker compose up
 ```
 
 ## Container Registry
