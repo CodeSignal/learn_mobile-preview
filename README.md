@@ -13,7 +13,7 @@ npm install
 npm run dev
 ```
 
-Open the wrapper at `http://localhost:8080`. It defaults to loading Expo web through `/__expo_preview/`.
+Open the wrapper at `http://localhost:3000`. It defaults to loading Expo web through `/__expo_preview/`.
 
 To target a different local Expo web URL:
 
