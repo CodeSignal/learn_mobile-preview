@@ -35,7 +35,7 @@ Run it:
 docker run --rm -p 3000:3000 learn_mobile-preview
 ```
 
-Open `http://localhost:3000`. The phone iframe points at `/__expo_preview/`, which nginx proxies to Expo web at `http://localhost:3001` by default. In Docker, that default only works when Expo is reachable from the sidecar as `localhost:3001`.
+Open `http://localhost:3000`. The phone iframe points at `/__expo_preview/`, which the Vite server proxies to Expo web at `http://localhost:3001` by default. In Docker, that default only works when Expo is reachable from the container as `localhost:3001`.
 
 To target a different Expo web URL:
 
